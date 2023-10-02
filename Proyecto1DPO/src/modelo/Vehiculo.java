@@ -1,5 +1,7 @@
 package modelo;
 
+import procesamiento.Archivo;
+
 import java.util.List;
 
 public class Vehiculo {

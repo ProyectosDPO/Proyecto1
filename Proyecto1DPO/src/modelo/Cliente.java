@@ -1,5 +1,7 @@
 package modelo;
 
+import procesamiento.Reserva;
+
 public class Cliente {
 
 private String nombre;

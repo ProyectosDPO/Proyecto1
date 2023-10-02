@@ -1,5 +1,7 @@
 package modelo;
 
+
+
 public class Tarjeta {
 	private String numero;
 	private String nombreTitular;

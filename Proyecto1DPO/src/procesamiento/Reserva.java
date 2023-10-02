@@ -1,5 +1,12 @@
 package procesamiento;
 
+import modelo.Sede;
+import modelo.MedioPago;
+import procesamiento.Archivo;
+import modelo.Cliente;
+import modelo.Vehiculo;
+import modelo.CategoriaVehiculo;
+
 public class Reserva {
 	
 	private String categoria;
