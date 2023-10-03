@@ -1,14 +1,192 @@
 package modelo;
 
+import java.io.BufferedReader;
+import java.io.IOException;
+import java.io.InputStreamReader;
+import java.util.Map;
+
 import procesamiento.Reserva;
 
 public class Cliente {
 
 private String nombre;
-private String contacto;
+private String numContacto;
 private String fechaNacimiento;
 private String nacionalidad;
 private String documentoIdentidad;
-private String licenciaConduccion;
+private Boolean licenciaConduccion;
 
+
+
+public void ejecutarCliente(Map<String, Cliente> ClienteMap) {
+	boolean continuar = true;
+	while (continuar) {
+
+		System.out.println("\n\n-------------Opciones de usuario-------------\n\n");
+		PrintmenuCliente();
+		int opcion_seleccionada = Integer.parseInt(input("Por favor seleccione una opción"));
+		if (opcion_seleccionada == 1) {
+			System.out.println("Opcion 1: Crear nuevo cliente");
+			NuevoCliente(ClienteMap);
+			@SuppressWarnings("unused")
+			String hacertiempo = (input("Cliente Creado. Click para continuar"));
+		}
+		if (opcion_seleccionada == 2) {
+			System.out.println("Opcion 2:  Buscar Cliente");
+			BuscarCliente(ClienteMap);
+			@SuppressWarnings("unused")
+			String hacertiempo = (input("Click para continuar"));
+		}
+		if (opcion_seleccionada == 3) {
+			System.out.println("Opcion 3:  Eliminar Cliente");
+			EliminarCliente(ClienteMap);
+			@SuppressWarnings("unused")
+			String hacertiempo = (input("Cliente Eliminado.Click para continuar"));
+		}
+		if (opcion_seleccionada == 4) {
+			System.out.println("Opcion 4:  Clientes Actuales");
+			showClientes(ClienteMap);
+			@SuppressWarnings("unused")
+			String hacertiempo = (input("Click para continuar"));
+			
+		}
+		if (opcion_seleccionada == 5) {
+			System.out.println("Opcion 5:  Por definir");
+			
+		}
+		if (opcion_seleccionada == 6) {
+			System.out.println("Opcion 6:  Por definir");
+		}
+
+		if (opcion_seleccionada == 7) {
+		}
+		if (opcion_seleccionada == 8) {
+			System.out.println("Opcion 8:  Por definir");
+		}
+		if (opcion_seleccionada == 9) {
+			System.out.println("Saliendo de la app...\n\n...");
+			continuar = false;
+		}
+
+	}
+}
+
+
+
+public void PrintmenuCliente() {
+	{
+		System.out.println("1.Crear nuevo Cliente\n2.Buscar Cliente\n3Eliminar Cliente"
+				+ "\n4.Mostrar todos los clientes\n" + "5.Por definir\n6.Por definir\n7.Por Definir"
+				+ "\n8.Por definir\n9.Salir al Menu principal\n");
+	}
+	
+}
+
+
+
+public Cliente(String elnombre, String elcontacto, String lafechaNacimiento, String lanacionalidad, 
+		String eldocumentoIdentidad) {
+	super();
+	this.nombre = elnombre;
+	this.numContacto = elcontacto;
+	this.fechaNacimiento = lafechaNacimiento;
+	this.nacionalidad = lanacionalidad;
+	this.documentoIdentidad = eldocumentoIdentidad;
+	this.licenciaConduccion = true;
+}
+
+public String darNombre() {
+	return nombre;
+}
+
+public String darContacto() {
+	return numContacto;
+}
+
+public String darFechaNacimiento() {
+	return fechaNacimiento;
+}
+
+public String darNacionalidad() {
+	return nacionalidad;
+}
+public String darDocumento() {
+	return documentoIdentidad;
+}
+
+public Boolean darLicencia() {
+	return licenciaConduccion;
+}
+
+public void NuevoCliente(Map<String, Cliente> ClienteMap) {
+	String elnombre = (input("Nombre del cliente -> "));
+	String elnumero = (input("Numero de contacto dle cliente -> "));
+	String lafechaNacimiento = (input("Fecha de nacimiento (dd/mm/aaaa) -> "));
+	String lanacionalidad = (input("Nacionalidad -> "));
+	String eldocumento= (input("Documento Identidad -> "));
+	Cliente nuevoCliente = new Cliente(elnombre,elnumero,lafechaNacimiento,lanacionalidad,eldocumento);
+	ClienteMap.put(eldocumento, nuevoCliente);
+	System.out.println("Se ha guardado exitosamente el cliente, para buscarlo use su numero de identidad");
+	
+	@SuppressWarnings("unused")
+	String hacertiempo = (input("Click para continuar"));
+}
+
+public void BuscarCliente(Map<String, Cliente> ClienteMap) {
+	String eldocumento= (input("Ingrese el documento de identidad del cliente -> "));
+	if (ClienteMap.containsKey(eldocumento)){
+		Cliente busqueda = ClienteMap.get(eldocumento);
+		System.out.println("\n+--------------------------------------+\n");
+		System.out.println("Nombre Cliente: " + busqueda.darNombre());
+		System.out.println("Numero de contacto: " + busqueda.darContacto());
+		System.out.println("Fecha Nacimiento: " + busqueda.darFechaNacimiento());
+		System.out.println("Documento Identidad: " + busqueda.darDocumento());
+		System.out.println("Pase Activo: " + busqueda.darLicencia());
+		System.out.println("\n+--------------------------------------+\n");
+	}
+	else {
+		System.out.println("Cliente no se ha encontrado");
+	}
+	
+}
+
+public void showClientes(Map<String, Cliente> ClienteMap) {
+	System.out.println("\nSEDES ACTUALES: \n\n+--------------------------------------+\n");
+	for (Map.Entry<String, Cliente> entry : ClienteMap.entrySet()) {
+		Cliente busqueda = entry.getValue();
+		System.out.println("\n+--------------------------------------+\n");
+		System.out.println("Nombre Cliente: " + busqueda.darNombre());
+		System.out.println("Numero de contacto: " + busqueda.darContacto());
+		System.out.println("Fecha Nacimiento: " + busqueda.darFechaNacimiento());
+		System.out.println("Documento Identidad: " + busqueda.darDocumento());
+		System.out.println("Pase Activo: " + busqueda.darLicencia());
+		System.out.println("\n+--------------------------------------+\n");
+
+	}
+}
+
+public void EliminarCliente(Map<String, Cliente> ClienteMap) {
+	String eldocumento= (input("Ingrese el documento de identidad del cliente -> "));
+	if (ClienteMap.containsKey(eldocumento)) {
+		ClienteMap.remove(eldocumento);
+
+	} else {
+		System.out.println("No se ha encontrado la sede que desea buscar");
+	}
+}
+
+
+
+
+public String input(String mensaje) {
+	try {
+		System.out.print(mensaje + ": ");
+		BufferedReader reader = new BufferedReader(new InputStreamReader(System.in));
+		return reader.readLine();
+	} catch (IOException e) {
+		System.out.println("Error leyendo de la consola");
+		e.printStackTrace();
+	}
+	return null;
+}
 }

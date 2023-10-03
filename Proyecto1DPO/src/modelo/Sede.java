@@ -73,16 +73,19 @@ public class Sede {
 			if (opcion_seleccionada == 2) {
 				System.out.println("Opcion 2:  Consultar sedes");
 				showSede(sedeMap);
+				@SuppressWarnings("unused")
 				String hacertiempo = (input("Click para continuar"));
 			}
 			if (opcion_seleccionada == 3) {
 				System.out.println("Opcion 3:  Modificar Invenatrio vehiculos Sede");
 				ModificarInvenatrioVehiculos(sedeMap);
+				@SuppressWarnings("unused")
 				String hacertiempo = (input("Click para continuar"));
 			}
 			if (opcion_seleccionada == 4) {
 				System.out.println("Opcion 4:  Sede especifica");
 				SedeEspecifica(sedeMap);
+				@SuppressWarnings("unused")
 				String hacertiempo = (input("Click para continuar"));
 			}
 			if (opcion_seleccionada == 5) {
@@ -128,13 +131,19 @@ public class Sede {
 
 	public void SedeEspecifica(Map<String, Sede> sedeMap) {
 		String elnombre = (input("Nombre de la sede -> "));
-		Sede sede = sedeMap.get(elnombre);
-		System.out.println("\n+--------------------------------------+\n");
-		System.out.println("Nombre Sede: " + sede.darNombre());
-		System.out.println("Ubicacion Sede: " + sede.darUbicacion());
-		System.out.println("Horario Sede: " + sede.darHorario());
-		System.out.println("Vehiculos Disponibles: " + sede.darcantidadVehiculos());
-		System.out.println("\n+--------------------------------------+\n");
+		if (sedeMap.containsKey(elnombre)) {
+			Sede sede = sedeMap.get(elnombre);
+			System.out.println("\n+--------------------------------------+\n");
+			System.out.println("Nombre Sede: " + sede.darNombre());
+			System.out.println("Ubicacion Sede: " + sede.darUbicacion());
+			System.out.println("Horario Sede: " + sede.darHorario());
+			System.out.println("Vehiculos Disponibles: " + sede.darcantidadVehiculos());
+			System.out.println("\n+--------------------------------------+\n");
+		}
+
+		else {
+			System.out.println("No se ha encontrado la sede que desea buscar");
+		}
 
 	}
 
@@ -145,8 +154,7 @@ public class Sede {
 			int nuevaCantidad = Integer.parseInt(input("Cantidad de vehiculos ->"));
 			modificar.setCantidadVehiculos(nuevaCantidad);
 			sedeMap.put(elnombre, modificar);
-		}
-		else {
+		} else {
 			System.out.println("No se ha encontrado la sede que desea buscar");
 		}
 

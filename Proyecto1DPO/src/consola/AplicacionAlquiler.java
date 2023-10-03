@@ -18,7 +18,8 @@ import procesamiento.Archivo;
 public class AplicacionAlquiler {
 	
 	Map<String, Sede> sedeMap = new HashMap<>();
-	private Sede nuevasede;
+	Map<String, Cliente> ClienteMap = new HashMap<>();
+	
 	
 	
 	public void opcionesUsuario()
@@ -41,18 +42,19 @@ public class AplicacionAlquiler {
 	 if (opcion_seleccionada ==1) 
 	 	{System.out.println("Opcion 1: Cargar Archivos de la compañia");}	
 	 if (opcion_seleccionada ==2) 
-	 	{System.out.println("Opcion 2:  Menu Clientes");}
+	 	{System.out.println("Opcion 2:  Menu Clientes");
+	 	Cliente funcionesCliente = new Cliente(null, null, null, null, null);
+	 	funcionesCliente.ejecutarCliente(ClienteMap);}
+	 
 	 if (opcion_seleccionada ==3) 
 	 	{System.out.println("Opcion 3:  Menu Sede");
 	 	Sede funcionesSede = new Sede(null, null, null, opcion_seleccionada);
 	 	funcionesSede.ejecutarSede(sedeMap);
-	 	//System.out.println(sedeMap.get(elnombre).darUbicacion());
 	 	}	
 	 if (opcion_seleccionada ==4) 
 	 	{System.out.println("Opcion 4:  Menu Empleado");}
 	 if (opcion_seleccionada ==5) 
 	 	{System.out.println("Opcion 5:  9 se sale de la app");
-	 	nuevasede.showSede(sedeMap);
 	 	}	
 	 if (opcion_seleccionada ==6) 
 	 	{System.out.println("Opcion 6:  9 se sale de la app");
