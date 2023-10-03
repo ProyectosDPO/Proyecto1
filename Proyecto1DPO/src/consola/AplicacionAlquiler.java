@@ -4,6 +4,9 @@ import modelo.Sede;
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.List;
 
 import modelo.Cliente;
 import modelo.Empleado;
@@ -13,12 +16,19 @@ import procesamiento.Archivo;
 
 public class AplicacionAlquiler {
 	
+	List<Sede> sedeList = new ArrayList<>();
+	private Sede nuevasede;
+	
+	
 	public void opcionesUsuario()
-	{System.out.println("1.Por definir\n2.Por definir\n3.Por definir\n4.Por definir\n"
+	{System.out.println("1.Cargar datos\n2.Menu Clientes\n3.Menu Sede\n4.Menu empleado\n"
 			+ "5.Por definir\n6.Por definir\n7.Por definir\n8.Por definir\n9.Salir\n");}
+	
+	
 	
 	public void ejecutar_aplicacion()
 	{
+
 	boolean continuar = true;
 	
 	while (continuar)
@@ -28,15 +38,23 @@ public class AplicacionAlquiler {
 		opcionesUsuario();
 		int opcion_seleccionada = Integer.parseInt(input("Por favor seleccione una opción"));
 	 if (opcion_seleccionada ==1) 
-	 	{System.out.println("Opcion 1:  9 se sale de la app");}	
+	 	{System.out.println("Opcion 1: Cargar Archivos de la compañia");}	
 	 if (opcion_seleccionada ==2) 
-	 	{System.out.println("Opcion 2:  9 se sale de la app");}
+	 	{System.out.println("Opcion 2:  Menu Clientes");}
 	 if (opcion_seleccionada ==3) 
-	 	{System.out.println("Opcion 3:  9 se sale de la app");}	
+	 	{System.out.println("Opcion 3:  Menu Sede");
+	 	String elnombre= (input("Nombre de la sede -> "));
+	 	String laubicacion = (input("Ubicacion de la sede -> "));
+	 	String losHorarios= (input("Horario Atencion -> "));
+	 	nuevasede = new Sede(elnombre,laubicacion,losHorarios);
+	 	sedeList.add(nuevasede);
+	 	}	
 	 if (opcion_seleccionada ==4) 
-	 	{System.out.println("Opcion 4:  9 se sale de la app");}
+	 	{System.out.println("Opcion 4:  Menu Empleado");}
 	 if (opcion_seleccionada ==5) 
-	 	{System.out.println("Opcion 5:  9 se sale de la app");}	
+	 	{System.out.println("Opcion 5:  9 se sale de la app");
+	 	nuevasede.showSede(sedeList);
+	 	}	
 	 if (opcion_seleccionada ==6) 
 	 	{System.out.println("Opcion 6:  9 se sale de la app");}
 	 if (opcion_seleccionada ==7) 
@@ -44,8 +62,10 @@ public class AplicacionAlquiler {
 	 if (opcion_seleccionada ==8) 
 	 	{System.out.println("Opcion 8:  9 se sale de la app");}
 	 if (opcion_seleccionada ==9) 
-	 	{continuar=false;}
+	 	{System.out.println("Saliendo de la app...\n\n...");
+		 continuar=false;}
 	}
+	
 
 	
 	}
@@ -56,6 +76,7 @@ public class AplicacionAlquiler {
 		Ejecutador.ejecutar_aplicacion();
 
 	}
+	
 	
 	public String input(String mensaje) {
 		try {
