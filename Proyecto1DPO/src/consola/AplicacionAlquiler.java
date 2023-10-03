@@ -7,6 +7,7 @@ import java.io.InputStreamReader;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import modelo.Cliente;
 import modelo.Empleado;
@@ -16,7 +17,7 @@ import procesamiento.Archivo;
 
 public class AplicacionAlquiler {
 	
-	List<Sede> sedeList = new ArrayList<>();
+	Map<String, Sede> sedeMap = new HashMap<>();
 	private Sede nuevasede;
 	
 	
@@ -43,32 +44,37 @@ public class AplicacionAlquiler {
 	 	{System.out.println("Opcion 2:  Menu Clientes");}
 	 if (opcion_seleccionada ==3) 
 	 	{System.out.println("Opcion 3:  Menu Sede");
-	 	String elnombre= (input("Nombre de la sede -> "));
-	 	String laubicacion = (input("Ubicacion de la sede -> "));
-	 	String losHorarios= (input("Horario Atencion -> "));
-	 	nuevasede = new Sede(elnombre,laubicacion,losHorarios);
-	 	sedeList.add(nuevasede);
+	 	Sede funcionesSede = new Sede(null, null, null, opcion_seleccionada);
+	 	funcionesSede.ejecutarSede(sedeMap);
+	 	//System.out.println(sedeMap.get(elnombre).darUbicacion());
 	 	}	
 	 if (opcion_seleccionada ==4) 
 	 	{System.out.println("Opcion 4:  Menu Empleado");}
 	 if (opcion_seleccionada ==5) 
 	 	{System.out.println("Opcion 5:  9 se sale de la app");
-	 	nuevasede.showSede(sedeList);
+	 	nuevasede.showSede(sedeMap);
 	 	}	
 	 if (opcion_seleccionada ==6) 
-	 	{System.out.println("Opcion 6:  9 se sale de la app");}
+	 	{System.out.println("Opcion 6:  9 se sale de la app");
+	 	}
+	 	
 	 if (opcion_seleccionada ==7) 
-	 	{System.out.println("Opcion 7:  9 se sale de la app");}	
+	 	{System.out.println("Opcion 7:  9 se sale de la app");
+	 	String sd= (input("Nombre de la sede -> "));
+	 	Sede arrendada = sedeMap.get(sd);
+	 	arrendada.ArrendamientoUnCarro();
+	 	sedeMap.put(sd, arrendada);
+	 	}
 	 if (opcion_seleccionada ==8) 
 	 	{System.out.println("Opcion 8:  9 se sale de la app");}
 	 if (opcion_seleccionada ==9) 
 	 	{System.out.println("Saliendo de la app...\n\n...");
 		 continuar=false;}
-	}
+	}}
 	
 
 	
-	}
+	
 
 	public static void main(String[] args) {
 		System.out.println("APLICACION DE ALQUILER DE VEHICULOS\n\n");
