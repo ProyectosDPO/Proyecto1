@@ -75,7 +75,7 @@ public void ejecutarCliente(Map<String, Cliente> ClienteMap) {
 
 public void PrintmenuCliente() {
 	{
-		System.out.println("1.Crear nuevo Cliente\n2.Buscar Cliente\n3Eliminar Cliente"
+		System.out.println("1.Crear nuevo Cliente\n2.Buscar Cliente\n3.Eliminar Cliente"
 				+ "\n4.Mostrar todos los clientes\n" + "5.Por definir\n6.Por definir\n7.Por Definir"
 				+ "\n8.Por definir\n9.Salir al Menu principal\n");
 	}
@@ -127,9 +127,6 @@ public void NuevoCliente(Map<String, Cliente> ClienteMap) {
 	Cliente nuevoCliente = new Cliente(elnombre,elnumero,lafechaNacimiento,lanacionalidad,eldocumento);
 	ClienteMap.put(eldocumento, nuevoCliente);
 	System.out.println("Se ha guardado exitosamente el cliente, para buscarlo use su numero de identidad");
-	
-	@SuppressWarnings("unused")
-	String hacertiempo = (input("Click para continuar"));
 }
 
 public void BuscarCliente(Map<String, Cliente> ClienteMap) {

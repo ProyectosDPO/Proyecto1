@@ -19,6 +19,7 @@ public class AplicacionAlquiler {
 	
 	Map<String, Sede> sedeMap = new HashMap<>();
 	Map<String, Cliente> ClienteMap = new HashMap<>();
+	Map<String, String> EmpleadoMap = new HashMap<>();
 	
 	
 	
@@ -52,7 +53,10 @@ public class AplicacionAlquiler {
 	 	funcionesSede.ejecutarSede(sedeMap);
 	 	}	
 	 if (opcion_seleccionada ==4) 
-	 	{System.out.println("Opcion 4:  Menu Empleado");}
+	 	{System.out.println("Opcion 4:  Menu Empleado");
+	 	Empleado funcionesEmpleado = new Empleado(null, null);
+	 	funcionesEmpleado.ejecutarEmpleado(EmpleadoMap);
+	 	}
 	 if (opcion_seleccionada ==5) 
 	 	{System.out.println("Opcion 5:  9 se sale de la app");
 	 	}	
