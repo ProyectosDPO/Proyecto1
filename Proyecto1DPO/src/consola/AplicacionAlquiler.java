@@ -12,6 +12,7 @@ import java.util.Map;
 import modelo.Cliente;
 import modelo.Empleado;
 import procesamiento.Archivo;
+import procesamiento.Reserva;
 
 
 
@@ -20,6 +21,7 @@ public class AplicacionAlquiler {
 	Map<String, Sede> sedeMap = new HashMap<>();
 	Map<String, Cliente> ClienteMap = new HashMap<>();
 	Map<String, String> EmpleadoMap = new HashMap<>();
+	Map<String, Reserva> ReservasClientes = new HashMap<>();
 	
 	
 	
@@ -35,6 +37,7 @@ public class AplicacionAlquiler {
 	boolean continuar = true;
 	
 	while (continuar)
+		
 	
 	{
 		System.out.println("\n\n-------------Opciones de usuario-------------\n\n");
@@ -45,7 +48,7 @@ public class AplicacionAlquiler {
 	 if (opcion_seleccionada ==2) 
 	 	{System.out.println("Opcion 2:  Menu Clientes");
 	 	Cliente funcionesCliente = new Cliente(null, null, null, null, null);
-	 	funcionesCliente.ejecutarCliente(ClienteMap);}
+	 	funcionesCliente.ejecutarCliente(ClienteMap,ReservasClientes);}
 	 
 	 if (opcion_seleccionada ==3) 
 	 	{System.out.println("Opcion 3:  Menu Sede");
