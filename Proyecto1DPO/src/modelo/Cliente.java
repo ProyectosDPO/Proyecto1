@@ -18,7 +18,7 @@ private Boolean licenciaConduccion;
 
 
 
-public void ejecutarCliente(Map<String, Cliente> ClienteMap) {
+public void ejecutarCliente(Map<String, Cliente> ClienteMap,Map<String, Reserva> ReservasCliente,Map<String, Sede> sedeMaps) {
 	boolean continuar = true;
 	while (continuar) {
 
@@ -51,11 +51,12 @@ public void ejecutarCliente(Map<String, Cliente> ClienteMap) {
 			
 		}
 		if (opcion_seleccionada == 5) {
-			System.out.println("Opcion 5:  Por definir");
-			
+			System.out.println("Opcion 5:  Generar Reserva");
+			GenerarReserva(ClienteMap, ReservasCliente, sedeMaps);
 		}
 		if (opcion_seleccionada == 6) {
-			System.out.println("Opcion 6:  Por definir");
+			System.out.println("Opcion 6:  Mostrar Reservas");
+			ShowReservas(ReservasCliente);
 		}
 
 		if (opcion_seleccionada == 7) {
@@ -76,7 +77,7 @@ public void ejecutarCliente(Map<String, Cliente> ClienteMap) {
 public void PrintmenuCliente() {
 	{
 		System.out.println("1.Crear nuevo Cliente\n2.Buscar Cliente\n3.Eliminar Cliente"
-				+ "\n4.Mostrar todos los clientes\n" + "5.Por definir\n6.Por definir\n7.Por Definir"
+				+ "\n4.Mostrar todos los clientes\n" + "5.Generar nueva reserva\n6.Ver reservas actuales\n7.Por Definir"
 				+ "\n8.Por definir\n9.Salir al Menu principal\n");
 	}
 	
@@ -173,6 +174,16 @@ public void EliminarCliente(Map<String, Cliente> ClienteMap) {
 }
 
 
+public void GenerarReserva(Map<String, Cliente> ClienteMap,Map<String, Reserva> ReservasClientes,Map<String, Sede> sedeMap) {
+	
+	Reserva funcionesReserva = new Reserva(null, null, 0, null, null, null, 0);
+	funcionesReserva.NuevaReserva(ReservasClientes, ClienteMap,sedeMap);
+}
+
+public void ShowReservas(Map<String, Reserva> ReservasClientes) {
+	Reserva funcionesReserva = new Reserva(null, null, 0, null, null, null, 0);
+	funcionesReserva.showReservas(ReservasClientes);
+}
 
 
 public String input(String mensaje) {

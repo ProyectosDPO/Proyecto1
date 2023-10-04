@@ -48,7 +48,7 @@ public class AplicacionAlquiler {
 	 if (opcion_seleccionada ==2) 
 	 	{System.out.println("Opcion 2:  Menu Clientes");
 	 	Cliente funcionesCliente = new Cliente(null, null, null, null, null);
-	 	funcionesCliente.ejecutarCliente(ClienteMap,ReservasClientes);}
+	 	funcionesCliente.ejecutarCliente(ClienteMap,ReservasClientes,sedeMap);}
 	 
 	 if (opcion_seleccionada ==3) 
 	 	{System.out.println("Opcion 3:  Menu Sede");
