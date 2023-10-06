@@ -10,14 +10,14 @@ public class Sede {
 	private String nombre;
 	private String ubicacion;
 	private String horariosAtencion;
-	private ArrayList<String> empleados;
+	private ArrayList<Empleado> empleados;
 	private int cantidadVehiculos;
 
 	public Sede(String elNombre, String laUbicacion, String loshorariosAtencion, int lacantidadVehiculos) {
 		this.nombre = elNombre;
 		this.ubicacion = laUbicacion;
 		this.horariosAtencion = loshorariosAtencion;
-		this.empleados = new ArrayList<String>();
+		this.empleados = new ArrayList<Empleado>();
 		this.cantidadVehiculos = lacantidadVehiculos;
 
 	}
@@ -173,7 +173,7 @@ public class Sede {
 		}
 	}
 
-	public ArrayList<String> darEmpleados() {
+	public ArrayList<Empleado> darEmpleados() {
 		return empleados;
 	}
 

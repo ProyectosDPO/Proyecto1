@@ -2,6 +2,7 @@ package consola;
 import modelo.Sede;
 
 import java.io.BufferedReader;
+import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.io.InputStreamReader;
 import java.util.ArrayList;
@@ -31,7 +32,7 @@ public class AplicacionAlquiler {
 	
 	
 	
-	public void ejecutar_aplicacion()
+	public void ejecutar_aplicacion() throws FileNotFoundException, IOException
 	{
 
 	boolean continuar = true;
@@ -44,7 +45,12 @@ public class AplicacionAlquiler {
 		opcionesUsuario();
 		int opcion_seleccionada = Integer.parseInt(input("Por favor seleccione una opción"));
 	 if (opcion_seleccionada ==1) 
-	 	{System.out.println("Opcion 1: Cargar Archivos de la compañia");}	
+	 	{System.out.println("Opcion 1: Cargar Archivos de la compañia");
+	 	Archivo funciones = new Archivo();
+	 	sedeMap = funciones.cargarMenu("/Users/juanernestopinto/Desktop/Trabajos Java/Proyecto1DPO/Proyecto1DPO/data/Sedes.csv");
+	 	
+	 	
+	 	}	
 	 if (opcion_seleccionada ==2) 
 	 	{System.out.println("Opcion 2:  Menu Clientes");
 	 	Cliente funcionesCliente = new Cliente(null, null, null, null, null);
@@ -85,7 +91,7 @@ public class AplicacionAlquiler {
 	
 	
 
-	public static void main(String[] args) {
+	public static void main(String[] args) throws FileNotFoundException, IOException {
 		System.out.println("APLICACION DE ALQUILER DE VEHICULOS\n\n");
 		AplicacionAlquiler Ejecutador = new AplicacionAlquiler();
 		Ejecutador.ejecutar_aplicacion();
