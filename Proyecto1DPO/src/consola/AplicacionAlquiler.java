@@ -47,7 +47,9 @@ public class AplicacionAlquiler {
 	 if (opcion_seleccionada ==1) 
 	 	{System.out.println("Opcion 1: Cargar Archivos de la compañia");
 	 	Archivo funciones = new Archivo();
-	 	sedeMap = funciones.cargarMenu("data/Sedes.csv");
+	 	sedeMap = funciones.cargarSede("data/Sedes.csv");
+	 	ClienteMap = funciones.cargarClientes("data/Clientes.csv");
+	 	sedeMap = funciones.cargarEmpleados("data/Empleados.csv", sedeMap);
 	 	
 	 	
 	 	}	
