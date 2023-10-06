@@ -49,7 +49,7 @@ public class AplicacionAlquiler {
 	 	Archivo funciones = new Archivo();
 	 	sedeMap = funciones.cargarSede("data/Sedes.csv");
 	 	ClienteMap = funciones.cargarClientes("data/Clientes.csv");
-	 	sedeMap = funciones.cargarEmpleados("data/Empleados.csv", sedeMap);
+	 	sedeMap = funciones.cargarEmpleadosaSede("data/Empleados.csv", sedeMap,EmpleadoMap);
 	 	
 	 	
 	 	}	
